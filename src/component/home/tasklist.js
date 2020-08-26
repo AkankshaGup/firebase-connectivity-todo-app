@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {setTaskToReducer,updateActivateTab} from "../../action/curdOperationonTask"
 import { Link} from "react-router-dom";
+import ListItem from "./listItem";
 
 class TaskList extends Component{
   constructor(props){
@@ -46,13 +47,7 @@ class TaskList extends Component{
        <div className="taskListHEader">
          
          {this.state.taskList.map((val)=>{
-         return(<Link  key={val.id} to={`/detail/${val.id}`}><div className="innerTaskList">
-           <Link to="detail"></Link><div className="iconDiv"><i className="fa fa-comments"></i></div>
-         <div style={{flexGrow:"1",padding: "5px 8px"}}>
-           <div className="taskTextList"><span>{val.discription}</span><span>{this.props.activeTab}</span></div>
-           <div className="taskTextList"><span>{val.where}</span><span>{val.sumaryName}</span></div>
-         </div>
-         </div></Link> )
+         return(<ListItem val={val}  key={val.id} activetab={this.props.activeTab} /> )
           
          })}
         </div>
